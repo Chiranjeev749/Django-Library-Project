@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Home Page</h1>
+        {% if user.is_authenticated %}
+            <p>You are logged in</p>
+            <p>Welcome: {{user.get_username}}</p>
+            <p>Total Books: {{num_books}}</p>
+            <p>num_book_instance: {{num_instance}}</p> 
+            <p>Availble Books: {{num_instance_avail}}</p>
+            <p><a href="/accounts/logout/"><b>logout</b></a></p>
+            <p><a href="/catalog/profile/"><b>Check Profile</b></a></p>
+        {% else %}
+            <p>You are not logged in</p>
+            <p ><a href="/accounts/login/"><b>login</b></a></p>
+            <p ><a href="/catalog/signup/"><b>Click Here To Sign Up</b></a></p>
+        {% endif %}
+    </body>
+</html>

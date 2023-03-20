@@ -1,0 +1,7 @@
+<h1>Welcome To Your Profile Page</h1>
+<h2>{{user.get_username}}</h2>
+<h2>Here are your books checked out list:</h2>
+{% for books in bookinstance_list %}
+    <p><li>{{books.book.title}}</li></p>
+{% endfor %}
+<a href="/catalog/my_view">my_view</a>

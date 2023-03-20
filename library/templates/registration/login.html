@@ -1,0 +1,24 @@
+{% comment %} Check error {% endcomment %}
+{% if form.error %}
+    <p>Your username or password was incorrect. please try again</p>
+{% endif %}
+
+{% comment %} either user not logged in or logged in but no permitted to see this page {% endcomment %}
+{% if next %}
+    {% if user.is_authenticated %}
+        <p>You don't have the permission to see this page</p>
+    {% else %}
+        <p>please log in to see this page</p>    
+    {% endif %}
+{% endif %}
+<form action = "{%url "login"%}" method ="POST">
+    {% csrf_token %}
+    <p>{{form.username.label_tag}}
+       {{form.username}}</p>
+
+    <p>{{form.password.label_tag}}
+       {{form.password}}</p>
+    
+    <input type="submit" value ="login">
+    <input type ="hidden" value ="{{next}}" name ="next">
+</form>
